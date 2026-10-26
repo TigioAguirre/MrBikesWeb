@@ -1,89 +1,95 @@
-/* Dibujo de bicicletas en SVG (ilustrativo, sin imágenes externas) */
-function bikeSVG(o){
-  const c=o.color, d=o.dark||'#111214', k=o.kind;
-  const R=o.kids?30:42, ty=o.kids?4:0;
-  const rw={x:62,y:118}, fw={x:206,y:118};
-  const bb={x:118,y:118}, st={x:106,y:o.kids?78:64}, ht={x:o.kind==='urbana'?186:182,y:o.kids?76:60};
-  const tire=k==='montaña'?7:k==='ruta'?2.6:k==='eléctrica'?5:4;
-  const wheel=(p)=>`<circle cx="${p.x}" cy="${p.y}" r="${R}" fill="none" stroke="${d}" stroke-width="${tire}"/>
-    <circle cx="${p.x}" cy="${p.y}" r="${R-tire/2-2}" fill="none" stroke="#9aa0a8" stroke-width="1"/>
-    <g stroke="#b9bec6" stroke-width=".8">${[0,30,60,90,120,150].map(a=>`<line x1="${p.x-(R-6)*Math.cos(a*Math.PI/180)}" y1="${p.y-(R-6)*Math.sin(a*Math.PI/180)}" x2="${p.x+(R-6)*Math.cos(a*Math.PI/180)}" y2="${p.y+(R-6)*Math.sin(a*Math.PI/180)}"/>`).join('')}</g>
-    <circle cx="${p.x}" cy="${p.y}" r="3.5" fill="${d}"/>`;
-  const sw=k==='montaña'?5:4;
-  let bars='', saddleX=st.x-6;
-  if(k==='ruta') bars=`<path d="M${ht.x+2} ${ht.y-8}h10q9 0 9 10q0 9-9 9h-5" fill="none" stroke="${d}" stroke-width="3.5" stroke-linecap="round"/>`;
-  else if(k==='urbana') bars=`<path d="M${ht.x} ${ht.y-6}l8-14h12" fill="none" stroke="${d}" stroke-width="3.5" stroke-linecap="round"/>`;
-  else bars=`<path d="M${ht.x-6} ${ht.y-12}h22" stroke="${d}" stroke-width="4" stroke-linecap="round"/>`;
-  const extras=
-    (k==='eléctrica'?`<rect x="${bb.x-16}" y="${(bb.y+ht.y)/2-12}" width="38" height="10" rx="4" transform="rotate(-38 ${bb.x+3} ${(bb.y+ht.y)/2-7})" fill="#2b2e34" stroke="#FFC400" stroke-width="1.5"/><circle cx="${bb.x}" cy="${bb.y}" r="8" fill="#2b2e34" stroke="#FFC400" stroke-width="2"/>`:'')+
-    (k==='montaña'?`<rect x="${ht.x-3}" y="${ht.y+4}" width="6" height="26" rx="3" fill="#FFC400" transform="rotate(18 ${ht.x} ${ht.y+4})"/>`:'')+
-    (o.kids?`<circle cx="${rw.x}" cy="${rw.y}" r="${R+3}" fill="none" stroke="#FFC400" stroke-width="1.5" stroke-dasharray="3 5"/>`:'');
-  return `<svg viewBox="0 0 270 170" role="img" aria-label="${o.name}">
-  <ellipse cx="135" cy="${rw.y+R+3}" rx="105" ry="5" fill="rgba(0,0,0,.14)"/>
-  ${wheel(rw)}${wheel(fw)}
-  <g stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M${rw.x} ${rw.y}L${bb.x} ${bb.y}L${st.x} ${st.y}L${rw.x} ${rw.y}"/>
-    <path d="M${st.x} ${st.y}L${ht.x} ${ht.y}L${bb.x} ${bb.y}"/>
-    <path d="M${ht.x} ${ht.y}L${fw.x} ${fw.y}" stroke="${d}"/>
-    <path d="M${st.x} ${st.y}L${st.x-4} ${st.y-12}" stroke="${d}"/>
-  </g>
-  <rect x="${saddleX-8}" y="${st.y-17}" width="22" height="6" rx="3" fill="${d}"/>
-  <path d="M${ht.x} ${ht.y}l-2-10" stroke="${d}" stroke-width="4" stroke-linecap="round"/>
-  ${bars}${extras}
-  <circle cx="${bb.x}" cy="${bb.y}" r="9" fill="none" stroke="#9aa0a8" stroke-width="2.5"/>
-  <path d="M${bb.x} ${bb.y}l10 12" stroke="${d}" stroke-width="3" stroke-linecap="round"/>
-  <rect x="${bb.x+6}" y="${bb.y+10}" width="10" height="4" rx="2" fill="${d}"/>
-</svg>`;
-}
+document.documentElement.classList.add('js');
 
+const WA='593990866442';
+const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+
+/* Catálogo. Solo la bici fotografada tiene ficha; el resto son
+   espacios por completar con modelos, fotos y precios reales. */
 const BIKES=[
-  {name:'Trail Rider 29',kind:'montaña',color:'#E10600',price:1290,spec:'Aluminio · 21 vel. · Suspensión 100 mm',tag:'Nueva'},
-  {name:'Ridge Pro',kind:'montaña',color:'#FFC400',price:1890,spec:'Aluminio · 1x12 · Frenos hidráulicos'},
-  {name:'Velocity R1',kind:'ruta',color:'#111214',dark:'#E10600',price:1650,spec:'Carbono · 22 vel. · 8.2 kg',tag:'Top'},
-  {name:'Aero Sprint',kind:'ruta',color:'#E10600',price:1420,spec:'Aluminio · Shimano 105 · 20 vel.'},
-  {name:'City Flow',kind:'urbana',color:'#2c6fbb',price:640,spec:'Acero · 7 vel. · Guardabarros'},
-  {name:'Metro Classic',kind:'urbana',color:'#1f8f5f',price:590,spec:'Aluminio · Cambio interno 3 vel.'},
-  {name:'Volt City E1',kind:'eléctrica',color:'#E10600',price:2290,spec:'Motor 250 W · 80 km de autonomía',tag:'Nueva'},
-  {name:'Volt Trail E2',kind:'eléctrica',color:'#111214',dark:'#222',price:2790,spec:'Motor 500 W · Batería 624 Wh'},
-  {name:'Mini Rider 20',kind:'niños',color:'#FFC400',price:249,spec:'Rodado 20 · 6 vel. · Desde 7 años',kids:true},
-  {name:'Kid Spark 16',kind:'niños',color:'#E10600',price:189,spec:'Rodado 16 · Ruedas de apoyo',kids:true}
+  {marca:'X-PRO',modelo:'MTB aro 29 gris',cat:'montaña',rodado:'29"',foto:'assets/img/mtb-xpro-gris.webp',
+   spec:'Cuadro de aluminio · Horquilla de suspensión · Freno de disco · Transmisión Shimano',tag:'Destacada'},
+  {marca:'Hawk',modelo:'Montaña · por confirmar',cat:'montaña'},
+  {marca:'Venzo',modelo:'Ruta · por confirmar',cat:'ruta'},
+  {marca:'GW',modelo:'Ruta · por confirmar',cat:'ruta'},
+  {marca:'Franco\'s',modelo:'Urbana · por confirmar',cat:'urbana'},
+  {marca:'Tomcat',modelo:'Eléctrica · por confirmar',cat:'eléctrica'},
+  {marca:'Vairo',modelo:'Niños · por confirmar',cat:'niños'}
 ];
 const CATS=['todas','montaña','ruta','urbana','eléctrica','niños'];
 const cap=s=>s[0].toUpperCase()+s.slice(1);
-const money=n=>'$'+n.toLocaleString('es');
 
-const grid=document.getElementById('grid'), filters=document.querySelector('.filters');
-function render(cat){
-  grid.innerHTML=BIKES.filter(b=>cat==='todas'||b.kind===cat).map(b=>`
-    <article class="card">
-      <div class="pic">${b.tag?`<span class="tag ${b.tag==='Nueva'?'new':''}">${b.tag}</span>`:''}${bikeSVG(b)}</div>
+const grid=document.getElementById('grid'),filters=document.querySelector('.filters'),
+      brandSel=document.getElementById('brand'),count=document.getElementById('count');
+let cat='todas',brand='todas';
+
+const wheels='<svg viewBox="0 0 64 40" aria-hidden="true"><circle cx="14" cy="28" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="50" cy="28" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M14 28l12-16h14l10 16M26 12l8 16h-20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>';
+
+function render(){
+  const list=BIKES.filter(b=>(cat==='todas'||b.cat===cat)&&(brand==='todas'||b.marca===brand));
+  count.textContent=`${list.length} ${list.length===1?'bicicleta':'bicicletas'}`;
+  grid.innerHTML=list.length?list.map((b,i)=>{
+    const msg=`Hola Mr.Bike, me interesa la ${b.marca} ${b.modelo}${b.rodado?` (rodado ${b.rodado})`:''}. ¿Está disponible?`;
+    return `<article class="card" style="--i:${i}">
+      <div class="pic">${b.tag?`<span class="tag new">${b.tag}</span>`:''}${b.foto
+        ?`<img src="${b.foto}" alt="${b.marca} ${b.modelo}" loading="lazy">`
+        :`<div class="soon">${wheels}<span>Foto próximamente</span></div>`}</div>
       <div class="body">
-        <span class="meta">${cap(b.kind)}</span>
-        <h3>${b.name}</h3>
-        <p class="meta">${b.spec}</p>
-        <div class="row"><span class="price">${money(b.price)}</span><a class="btn" href="#contacto">Cotizar</a></div>
-      </div>
-    </article>`).join('');
+        <span class="brand">${b.marca} · ${cap(b.cat)}</span>
+        <h3>${b.modelo}</h3>
+        <p class="spec">${b.spec||'Ficha técnica próximamente'}</p>
+        <div class="row"><span class="price">Consultar</span><a class="btn" href="${wa(msg)}" rel="noopener">WhatsApp</a></div>
+      </div></article>`}).join('')
+    :'<p class="empty">No hay bicicletas con ese filtro por ahora. Escríbenos y las conseguimos.</p>';
 }
-filters.innerHTML=CATS.map((c,i)=>`<button class="chip" role="tab" aria-selected="${i===0}" data-c="${c}">${cap(c)}</button>`).join('');
-filters.addEventListener('click',e=>{
-  const b=e.target.closest('.chip'); if(!b) return;
-  filters.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-selected',x===b));
-  render(b.dataset.c);
+function setCat(c){
+  cat=c;
+  filters.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-selected',x.dataset.c===c));
+  render();
+}
+filters.innerHTML=CATS.map(c=>`<button class="chip" role="tab" aria-selected="${c==='todas'}" data-c="${c}">${cap(c)}</button>`).join('');
+brandSel.innerHTML='<option value="todas">Todas</option>'+[...new Set(BIKES.map(b=>b.marca))].map(m=>`<option>${m}</option>`).join('');
+filters.addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)setCat(b.dataset.c)});
+brandSel.addEventListener('change',()=>{brand=brandSel.value;render()});
+document.querySelectorAll('[data-cat]').forEach(a=>a.addEventListener('click',()=>{setCat(a.dataset.cat);closeMenu()}));
+render();
+
+/* menú móvil y mega-menú */
+const burger=document.querySelector('.burger'),menu=document.getElementById('menu'),
+      mega=document.querySelector('.has-mega'),megaBtn=document.querySelector('.mega-btn');
+function closeMenu(){
+  menu.classList.remove('open');burger.setAttribute('aria-expanded','false');
+  mega.classList.remove('open');megaBtn.setAttribute('aria-expanded','false');
+}
+burger.addEventListener('click',()=>{
+  const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);
 });
-render('todas');
+megaBtn.addEventListener('click',()=>{
+  const o=mega.classList.toggle('open');megaBtn.setAttribute('aria-expanded',o);
+});
+mega.addEventListener('mouseenter',()=>megaBtn.setAttribute('aria-expanded','true'));
+mega.addEventListener('mouseleave',()=>megaBtn.setAttribute('aria-expanded',mega.classList.contains('open')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();megaBtn.blur()}});
+document.addEventListener('click',e=>{if(!e.target.closest('.has-mega'))mega.classList.remove('open')});
+menu.addEventListener('click',e=>{if(e.target.matches('a'))closeMenu()});
 
-document.getElementById('heroBike').innerHTML=bikeSVG({name:'Bicicleta destacada',kind:'montaña',color:'#E10600',dark:'#fff'});
-document.getElementById('tallerArt').innerHTML=bikeSVG({name:'Taller',kind:'ruta',color:'#E10600',dark:'#fff'});
+/* revelado al scroll, escalonado por grupo */
+const items=[...document.querySelectorAll('.reveal')];
+items.forEach((el,i)=>el.style.setProperty('--d',i%5));
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+  items.forEach(el=>io.observe(el));
+}else items.forEach(el=>el.classList.add('in'));
 
-const burger=document.querySelector('.burger'), menu=document.getElementById('menu');
-burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
-menu.addEventListener('click',e=>{if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}});
+/* botones con mensaje de WhatsApp */
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=wa(a.dataset.wa);a.rel='noopener'});
 
+/* formulario → WhatsApp */
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
-  const f=e.target;
-  if(!f.nombre.value.trim()||!f.contacto.value.trim()){f.reportValidity?.();return}
-  document.getElementById('ok').hidden=false; f.reset();
+  const f=e.target,err=document.getElementById('err');
+  if(!f.nombre.value.trim()){err.hidden=false;f.nombre.focus();return}
+  err.hidden=true;
+  const m=f.msg.value.trim()||'Quisiera más información.';
+  window.open(wa(`Hola Mr.Bike, soy ${f.nombre.value.trim()}. ${m}`),'_blank','noopener');
 });
 document.getElementById('yr').textContent=new Date().getFullYear();

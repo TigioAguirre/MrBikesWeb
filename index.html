@@ -3,24 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mr.Bikes | Tienda de bicicletas</title>
-<meta name="description" content="Mr.Bikes: bicicletas de montaña, ruta, urbanas, eléctricas e infantiles, con taller y asesoría experta.">
+<title>Mr.Bike Importaciones | Bicicletas, componentes y taller en Quito</title>
+<meta name="description" content="Mr.Bike Importaciones: bicicletas, componentes y taller en Quito. X-PRO, Franco's, Venzo, GW, Shimano, Tomcat, Hawk, ECE, Vairo y Eagle.">
+<meta name="theme-color" content="#E25714">
+<link rel="icon" href="assets/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#catalogo">Saltar al catálogo</a>
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="Mr.Bikes inicio">
-      <svg viewBox="0 0 40 24" width="40" height="24" aria-hidden="true"><circle cx="9" cy="16" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="31" cy="16" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M9 16l7-10h9l6 10M16 6l6 10h-13M25 6l-2-3h-3" fill="none" stroke="#E10600" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Mr.<b>Bikes</b></span>
+    <a class="logo" href="#top" aria-label="Mr.Bike Importaciones, inicio">
+      <img src="assets/logo/mrbike-wordmark.webp" width="148" height="36" alt="Mr.Bike">
     </a>
-    <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="menu" id="menu">
-      <a href="#catalogo">Bicicletas</a>
-      <a href="#ventajas">Por qué Mr.Bikes</a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <div class="has-mega">
+        <button class="mega-btn" aria-expanded="false" aria-controls="mega">Bicicletas
+          <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+        <div class="mega" id="mega">
+          <a href="#catalogo" data-cat="montaña"><b>Montaña</b><span>MTB 26", 27.5" y 29"</span></a>
+          <a href="#catalogo" data-cat="ruta"><b>Ruta</b><span>700c · velocidad</span></a>
+          <a href="#catalogo" data-cat="urbana"><b>Urbanas</b><span>Ciudad y paseo</span></a>
+          <a href="#catalogo" data-cat="eléctrica"><b>Eléctricas</b><span>Asistidas</span></a>
+          <a href="#catalogo" data-cat="niños"><b>Niños</b><span>Rodado 12" a 24"</span></a>
+        </div>
+      </div>
+      <a href="#componentes">Componentes</a>
       <a href="#taller">Taller</a>
-      <a href="#opiniones">Opiniones</a>
+      <a href="#marcas">Marcas</a>
       <a class="btn btn-sm" href="#contacto">Contacto</a>
     </nav>
   </div>
@@ -30,94 +46,110 @@
 <section class="hero">
   <div class="wrap hero-in">
     <div class="hero-text">
-      <p class="eyebrow">Tu próxima aventura empieza aquí</p>
-      <h1>Pedalea más lejos.<br><span>Siente la ruta.</span></h1>
-      <p class="lead">Bicicletas de montaña, ruta, urbanas y eléctricas para cada rider, con asesoría real y taller propio.</p>
+      <p class="eyebrow">Importaciones · Quito, Ecuador</p>
+      <h1><span class="line">Bicicletas</span><span class="line">Componentes</span><span class="line o">Taller</span></h1>
+      <p class="lead">Todo para tu bici en un solo lugar: bicicletas de las mejores marcas, repuestos Shimano y taller propio en Av. Amazonas y Azuay.</p>
       <div class="cta">
         <a class="btn" href="#catalogo">Ver bicicletas</a>
-        <a class="btn btn-ghost" href="#contacto">Agenda una prueba</a>
+        <a class="btn btn-ghost" href="#contacto">Visítanos</a>
       </div>
-      <ul class="stats">
-        <li><b>+500</b> bicis vendidas</li>
-        <li><b>12</b> marcas</li>
-        <li><b>1 año</b> de garantía</li>
-      </ul>
     </div>
-    <div class="hero-art" id="heroBike" aria-hidden="true"></div>
+    <div class="hero-photo">
+      <img src="assets/img/mtb-xpro-gris.webp" width="580" height="620" alt="Bicicleta de montaña X-PRO gris, rodado 29, con horquilla de suspensión" fetchpriority="high">
+    </div>
   </div>
-  <div class="stripe" aria-hidden="true"></div>
+  <svg class="curve" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90V30C320 100 760 -10 1440 50V90Z" fill="#fff"/></svg>
 </section>
 
-<section class="section" id="catalogo">
+<section class="brands" id="marcas" aria-label="Marcas">
+  <div class="wrap">
+    <p class="eyebrow dark">Marcas que trabajamos</p>
+    <ul class="brand-list">
+      <li>X-PRO</li><li>Franco's</li><li>Venzo</li><li>GW</li><li>Shimano</li>
+      <li>Tomcat</li><li>Hawk</li><li>ECE</li><li>Vairo</li><li>Eagle</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="categorias">
+  <div class="wrap">
+    <p class="eyebrow dark">Categorías</p>
+    <h2>Elige cómo quieres rodar</h2>
+    <div class="cats">
+      <a class="cat reveal" href="#catalogo" data-cat="montaña"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M2 36l16-24 10 14 8-10 26 20z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Montaña</b><span>Ver todas →</span></a>
+      <a class="cat reveal" href="#catalogo" data-cat="ruta"><svg viewBox="0 0 64 40" aria-hidden="true"><circle cx="14" cy="28" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="50" cy="28" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M14 28l12-16h14l10 16M26 12l8 16h-20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Ruta</b><span>Ver todas →</span></a>
+      <a class="cat reveal" href="#catalogo" data-cat="urbana"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M6 34h52M12 34V16h12v18M30 34V8h14v26M48 34V20h10v14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Urbanas</b><span>Ver todas →</span></a>
+      <a class="cat reveal" href="#catalogo" data-cat="eléctrica"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M36 2L18 22h12l-4 16 20-22H34z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Eléctricas</b><span>Ver todas →</span></a>
+      <a class="cat reveal" href="#catalogo" data-cat="niños"><svg viewBox="0 0 64 40" aria-hidden="true"><circle cx="18" cy="28" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="46" cy="28" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M18 28l8-12h12l8 12M26 16l6 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg><b>Niños</b><span>Ver todas →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="catalogo">
   <div class="wrap">
     <p class="eyebrow dark">Catálogo</p>
-    <h2>Encuentra tu bicicleta</h2>
-    <div class="filters" role="tablist" aria-label="Categorías"></div>
+    <div class="cat-head">
+      <h2>Bicicletas</h2>
+      <p class="count" id="count" aria-live="polite"></p>
+    </div>
+    <div class="toolbar">
+      <div class="filters" role="tablist" aria-label="Categorías"></div>
+      <label class="select">Marca
+        <select id="brand"></select>
+      </label>
+    </div>
     <div class="grid" id="grid"></div>
+    <p class="note">Modelos, precios y fichas técnicas en actualización. Escríbenos por WhatsApp para confirmar disponibilidad, tallas y precio.</p>
   </div>
 </section>
 
-<section class="section dark" id="ventajas">
-  <div class="wrap">
-    <p class="eyebrow">Por qué Mr.Bikes</p>
-    <h2>Rodamos contigo, no solo te vendemos</h2>
-    <div class="features">
-      <article><span class="ico">🚲</span><h3>Armado profesional</h3><p>Cada bici sale revisada y ajustada por nuestros mecánicos.</p></article>
-      <article><span class="ico">📏</span><h3>Ajuste a tu medida</h3><p>Te ayudamos a elegir talla y postura para pedalear sin dolor.</p></article>
-      <article><span class="ico">💳</span><h3>Pago flexible</h3><p>Financiamiento y planes de pagos para que estrenes hoy.</p></article>
-      <article><span class="ico">🛡️</span><h3>Garantía y respaldo</h3><p>Un año de garantía y repuestos originales siempre disponibles.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="taller">
+<section class="section" id="componentes">
   <div class="wrap split">
-    <div>
-      <p class="eyebrow dark">Taller</p>
-      <h2>Tu bici siempre lista</h2>
-      <p>Mantenimiento preventivo, frenos, transmisión, suspensión y baterías eléctricas. Diagnóstico rápido y precios claros.</p>
-      <ul class="ticks">
-        <li>Afinado básico y completo</li>
-        <li>Cambio de componentes y upgrades</li>
-        <li>Servicio de suspensión y frenos hidráulicos</li>
-        <li>Diagnóstico de e-bikes</li>
+    <div class="reveal">
+      <p class="eyebrow dark">Componentes</p>
+      <h2>Todo para mejorar tu bici</h2>
+      <p>Transmisión, frenos, ruedas, cubiertas, manillares y accesorios. Trabajamos con Shimano y marcas importadas para que encuentres el repuesto que necesitas.</p>
+      <ul class="chips-static">
+        <li>Transmisión</li><li>Frenos</li><li>Ruedas y cubiertas</li><li>Suspensión</li><li>Manillar y potencia</li><li>Accesorios</li>
       </ul>
-      <a class="btn" href="#contacto">Reservar servicio</a>
+      <a class="btn" href="#contacto" data-wa="Hola Mr.Bike, necesito un componente para mi bicicleta.">Consultar un repuesto</a>
     </div>
-    <div class="card-art" id="tallerArt" aria-hidden="true"></div>
+    <div class="photo reveal">
+      <img src="assets/img/rider-mtb.webp" width="360" height="560" alt="Ciclista de montaña en ruta" loading="lazy">
+    </div>
   </div>
 </section>
 
-<section class="section alt" id="opiniones">
+<section class="section dark" id="taller">
   <div class="wrap">
-    <p class="eyebrow dark">Opiniones</p>
-    <h2>Lo que dicen nuestros riders</h2>
-    <div class="quotes">
-      <blockquote>“Me ayudaron a elegir mi primera MTB y la entregaron perfecta.” <cite>— Carlos R.</cite></blockquote>
-      <blockquote>“El mejor taller de la zona. Rápidos y honestos con los precios.” <cite>— Andrea M.</cite></blockquote>
-      <blockquote>“Mi e-bike es ideal para ir al trabajo. Súper recomendados.” <cite>— Luis P.</cite></blockquote>
+    <p class="eyebrow">Taller</p>
+    <h2>Tu bici siempre lista</h2>
+    <div class="features">
+      <article class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.6-.7-.7-2.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><h3>Mantenimiento</h3><p>Afinado básico y completo, ajuste de cambios y frenos.</p></article>
+      <article class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h3>Transmisión y frenos</h3><p>Cambio de cadena, cassette, platos y pastillas o discos.</p></article>
+      <article class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h3>Upgrades</h3><p>Cambio de componentes para ganar peso, desempeño y confort.</p></article>
+      <article class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><h3>Diagnóstico rápido</h3><p>Revisamos tu bici y te explicamos qué necesita antes de empezar.</p></article>
     </div>
+    <a class="btn" href="#contacto" data-wa="Hola Mr.Bike, quiero reservar un servicio de taller.">Reservar por WhatsApp</a>
   </div>
 </section>
 
 <section class="section contact" id="contacto">
   <div class="wrap split">
-    <div>
-      <p class="eyebrow">Contacto</p>
-      <h2>¿Listo para rodar?</h2>
-      <p>Escríbenos o visítanos y te asesoramos sin compromiso.</p>
+    <div class="reveal">
+      <img class="big-logo" src="assets/logo/mrbike-logo-sobre-naranja.webp" width="300" height="280" alt="Mr.Bike Importaciones" loading="lazy">
       <ul class="info">
-        <li>📍 Tu dirección aquí, Ciudad</li>
-        <li>📞 +00 000 000 0000</li>
-        <li>🕘 Lun–Sáb 9:00–19:00</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Av. Amazonas y Azuay, Quito – Ecuador</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><a href="https://wa.me/593990866442" rel="noopener">WhatsApp 0990866442</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><a href="https://www.instagram.com/mrbikeec" rel="noopener">@mrbikeec</a></li>
       </ul>
     </div>
-    <form id="form" novalidate>
-      <label>Nombre<input name="nombre" required></label>
-      <label>Correo o teléfono<input name="contacto" required></label>
-      <label>Mensaje<textarea name="msg" rows="4" placeholder="Me interesa..."></textarea></label>
-      <button class="btn" type="submit">Enviar mensaje</button>
-      <p class="ok" id="ok" role="status" hidden>¡Gracias! Te responderemos muy pronto.</p>
+    <form id="form" class="reveal" novalidate>
+      <h3>Escríbenos por WhatsApp</h3>
+      <label>Nombre<input name="nombre" autocomplete="name" required></label>
+      <label>Mensaje<textarea name="msg" rows="4" placeholder="Me interesa una bicicleta de montaña rodado 29…"></textarea></label>
+      <button class="btn btn-dark" type="submit">Abrir WhatsApp</button>
+      <p class="err" id="err" role="alert" hidden>Escribe tu nombre para continuar.</p>
     </form>
   </div>
 </section>
@@ -125,10 +157,15 @@
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="yr"></span> Mr.Bikes. Todos los derechos reservados.</span>
-    <span class="draft">Propuesta de diseño · imágenes ilustrativas</span>
+    <span>© <span id="yr"></span> Mr.Bike Importaciones · Quito, Ecuador</span>
+    <span class="social"><a href="https://www.instagram.com/mrbikeec" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@mrbikeec" rel="noopener">TikTok</a><a href="https://www.facebook.com/mrbikeec" rel="noopener">Facebook</a></span>
   </div>
 </footer>
+
+<a class="wa-float" href="https://wa.me/593990866442?text=Hola%20Mr.Bike%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n." aria-label="Escribir por WhatsApp" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.3z" fill="currentColor"/></svg>
+  <span>Escríbenos</span>
+</a>
 
 <script src="script.js"></script>
 </body>
